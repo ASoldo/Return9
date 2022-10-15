@@ -1,0 +1,20 @@
+#include "/Engine/Public/Platform.ush"
+
+float3 mult(float3 A, float3 B, float3 Texxx){
+	return (A + B) * Texxx;
+}
+
+float4 main(float2 uv, float Intensity, float Scale, float2 Offset, float TimeSpeed, float Time)
+{
+    uv.x += Time * TimeSpeed;
+    float x = pow(
+            saturate(
+                1.0 - abs(
+                    sin(uv.x * Scale + Offset.x) - (uv.y * Scale + Offset.y)
+                    )
+            ), 
+            (1.0 / Intensity)
+        );
+
+    return float4(0.0, x, 0.0, 1.0);
+}

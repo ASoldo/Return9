@@ -1,0 +1,9 @@
+#include "/Engine/Public/Platform.ush"
+
+float3 soldo;
+
+float3 mult(float3 A, float3 B, float3 Texxx){
+	float3 C = soldo;
+	return (A + B) * Texxx;
+}
+
